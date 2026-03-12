@@ -1,4 +1,4 @@
-# المسار يفضل يكون بصيغة raw string r'' عشان الـ backslashes
+
 file_path = r"E:\python\app.txt"
 
 my_list = ['a', 'd', 'u', 'q', 'r', 's', 'c']
@@ -17,7 +17,7 @@ you choose: """
 
 
 def add_task():
-    # استخدام encoding='utf-8' ضروري لدعم الإيموجي والرموز
+    # استخدام encoding='utf-8' 
     with open(file_path, 'a', encoding='utf-8') as my_file:
         while True:
             task = input("Write The Task Here: ").capitalize().strip()
@@ -98,7 +98,7 @@ def reset_and_add():
     if confirm == 'y':
         with open(file_path, 'w', encoding='utf-8') as my_file:
             print("--- File cleared! ---")
-            add_task()  # استدعاء فانكشن الإضافة بعد المسح
+            add_task() 
     else:
         print("--- Operation cancelled. ---")
 
@@ -123,7 +123,7 @@ def complete_task():
                 if "(Done 💯)" in lines[idx]:
                     print("--- This task is already marked! ---")
                 else:
-                    # تعديل السطر وإضافة الإيموجي مع ضمان وجود سطر جديد
+                   
                     lines[idx] = lines[idx].strip() + " (Done 💯)\n"
 
                     with open(file_path, 'w', encoding='utf-8') as f:
@@ -137,7 +137,6 @@ def complete_task():
         print("--- File not found. ---")
 
 
-# --- الحلقة الرئيسية للبرنامج ---
 while True:
     user = input(user_input_text).lower().strip()
 
@@ -164,3 +163,4 @@ while True:
         break
     else:
         print("Invalid choice, please try again.")
+
