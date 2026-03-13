@@ -2,7 +2,7 @@ import base64
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 
-# دالة مساعدة لتحويل الباسورد بتاعك لمفتاح Fernet صالح بنفس الأسماء
+
 
 
 def get_valid_key(master_pwd):
@@ -18,20 +18,18 @@ def write_key():
 
 
 def load_key():
-    # ملحوظة: لازم تتأكد إن ملف key.key موجود وفيه مفتاح فعلاً
     try:
         file = open("key.key", "rb")
         key = file.read()
         file.close()
         return key
     except FileNotFoundError:
-        # لو الملف مش موجود بنرجع قيمة افتراضية عشان الكود ميفصلش
         return b""
 
 
 main_pwd = input("what is your master password? ")
 
-# تعديل بسيط هنا لدمج المفتاحين بشكل يقبله Fernet
+ Fernet
 combined_key = get_valid_key(load_key().decode() + main_pwd)
 fer = Fernet(combined_key)
 
@@ -44,7 +42,7 @@ def view():
                 if "|" not in data:
                     continue
                 user, passw = data.split("|")
-                # فك التشفير وتحويله لنص مقروء
+              
                 decrypted_pwd = fer.decrypt(passw.encode()).decode()
                 print(f"user => {user} , password => {decrypted_pwd}")
     except Exception as e:
@@ -54,7 +52,6 @@ def view():
 def add():
     pn = input("Enter your Account name : ").strip()
     pwd = input("Enter your Password : ").strip().lower()
-    # التشفير وحفظه كـ string في الملف
     encrypted_pwd = fer.encrypt(pwd.encode()).decode()
     with open('password.txt', 'a') as f:
         f.write(f"{pn}|{encrypted_pwd}\n")
@@ -72,3 +69,4 @@ while True:
     else:
         print("invalid word!")
         continue
+
