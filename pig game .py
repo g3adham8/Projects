@@ -6,7 +6,7 @@ def roll():
     return result
 
 
-# 1. أولاً: نحدد عدد اللاعبين ونخرج من الحلقة
+
 while True:
     players = input("enter the number of players (2 - 4): ")
     if players.isdigit():
@@ -18,12 +18,10 @@ while True:
     else:
         print("Invalid input! Please enter a number.")
 
-# 2. تعريف المتغيرات خارج حلقات التكرار
 max_score = 50
 players_score = [0 for _ in range(players)]
 
-# 3. الحلقة الأساسية للعبة
-while max(players_score) < max_score:
+ while max(players_score) < max_score:
     for player_idx in range(players):
         print(f"\n--- Player {player_idx + 1}'s turn ---")
         print(f"Your total score is: {players_score[player_idx]}")
@@ -45,15 +43,15 @@ while max(players_score) < max_score:
                 print(f"You rolled a: {value}")
                 print(f"Current turn score: {current_turn_score}")
 
-        # 4. تحديث سكور اللاعب (يجب أن يكون داخل حلقة الـ for)
+        
         players_score[player_idx] += current_turn_score
         print(f"Your total score is now: {players_score[player_idx]}")
 
-        # التحقق إذا فاز اللاعب فوراً لإنهاء اللعبة
+        
         if players_score[player_idx] >= max_score:
             break
 
-# 5. إعلان الفائز
+
 winning_score = max(players_score)
 winning_idx = players_score.index(winning_score)
 print(
